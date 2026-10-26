@@ -7,6 +7,7 @@
 #include "AbilitySystemComponent.h"
 #include "PlayerStateBase.generated.h"
 
+class UBasePlayerAttributeSet;
 /**
  * 
  */
@@ -20,6 +21,9 @@ class BOSSHUNTERS_API APlayerStateBase : public APlayerState
 public:
 	UPROPERTY(BlueprintReadWrite,EditAnywhere)
 	UAbilitySystemComponent* AbilitySystemComponent;
+	
+	UPROPERTY(BlueprintReadWrite,EditAnywhere)
+	UBasePlayerAttributeSet* BasePlayerAttributeSet;
 	
 	
 };

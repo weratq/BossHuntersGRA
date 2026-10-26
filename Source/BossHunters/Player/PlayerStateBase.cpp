@@ -5,10 +5,15 @@
 #include "Player/PlayerStateBase.h"
 
 #include "AbilitySystemComponent.h"
+#include "Ability/BasePlayerAttributeSet.h"
 
 
 APlayerStateBase::APlayerStateBase()
 {
 	AbilitySystemComponent = CreateDefaultSubobject<UAbilitySystemComponent>("ASC");
+	
+	BasePlayerAttributeSet = CreateDefaultSubobject<UBasePlayerAttributeSet>("BasePlayerAttributeSet");
+	
+	
 	
 }
