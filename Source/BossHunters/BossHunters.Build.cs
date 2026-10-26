@@ -10,7 +10,7 @@ public class BossHunters : ModuleRules
 	
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
 
-		PrivateDependencyModuleNames.AddRange(new string[] { "GameplayAbilities" });
+		PrivateDependencyModuleNames.AddRange(new string[] { "GameplayAbilities", "GameplayTags" });
 
 		PublicIncludePaths.AddRange(new string[] {"BossHunters"});
 		// Uncomment if you are using Slate UI
