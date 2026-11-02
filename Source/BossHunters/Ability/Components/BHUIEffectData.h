@@ -3,14 +3,16 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameplayEffectComponents/AbilitiesGameplayEffectComponent.h"
+#include "GameplayEffectComponent.h"
+#include "UObject/SoftObjectPtr.h"
+
 #include "BHUIEffectData.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class BOSSHUNTERS_API UBHUIEffectData : public UAbilitiesGameplayEffectComponent
+class BOSSHUNTERS_API UBHUIEffectData : public UGameplayEffectComponent
 {
 	GENERATED_BODY()
 	
