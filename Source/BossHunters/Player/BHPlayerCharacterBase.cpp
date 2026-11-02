@@ -42,3 +42,40 @@ void ABHPlayerCharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerIn
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
 
+void ABHPlayerCharacterBase::GrantAllAbilities()
+{
+	UAbilitySystemComponent* ASC = GetAbilitySystemComponent();
+	
+	if (!ASC)
+	{
+		return;
+	}
+	
+	for (TSubclassOf<UGameplayAbility> Ability : Abilities)
+	{
+		if (Ability->IsValidLowLevel())
+		{
+			ASC->K2_GiveAbility(Ability, 1, INDEX_NONE);
+		}
+	}
+}
+
+void ABHPlayerCharacterBase::OnPlayerStateChanged(APlayerState* NewPlayerState, APlayerState* OldPlayerState)
+{
+	Super::OnPlayerStateChanged(NewPlayerState, OldPlayerState);
+	if (GetLocalRole() == ROLE_Authority)
+	{
+		GrantAllAbilities();
+	}
+	else if (GetLocalRole() == ROLE_AutonomousProxy)
+	{
+		OnASCReadyOnOwningClient();
+	}
+	
+}
+
+void ABHPlayerCharacterBase::OnASCReadyOnOwningClient_Implementation()
+{
+	
+}
+
