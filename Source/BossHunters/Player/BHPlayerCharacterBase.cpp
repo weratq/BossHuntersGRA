@@ -28,6 +28,7 @@ void ABHPlayerCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	GrantAllAbilities();
 }
 
 // Called every frame
@@ -40,5 +41,23 @@ void ABHPlayerCharacterBase::Tick(float DeltaTime)
 void ABHPlayerCharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+}
+
+void ABHPlayerCharacterBase::GrantAllAbilities()
+{
+	UAbilitySystemComponent* ASC = GetAbilitySystemComponent();
+	
+	if (!ASC)
+	{
+		return;
+	}
+	
+	for (TSubclassOf<UGameplayAbility> Ability : Abilities)
+	{
+		if (Ability->IsValidLowLevel())
+		{
+			ASC->K2_GiveAbility(Ability, 1, INDEX_NONE);
+		}
+	}
 }
 
