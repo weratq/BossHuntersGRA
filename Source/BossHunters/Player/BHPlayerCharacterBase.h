@@ -7,6 +7,8 @@
 #include "GameFramework/Character.h"
 #include "BHPlayerCharacterBase.generated.h"
 
+class UGameplayAbility;
+
 UCLASS()
 class BOSSHUNTERS_API ABHPlayerCharacterBase : public ACharacter, public IAbilitySystemInterface
 {
@@ -28,4 +30,16 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	TArray<TSubclassOf<UGameplayAbility>> Abilities;
+	
+	UFUNCTION(BlueprintCallable, Category = Abilities)
+	void GrantAllAbilities();
+	
+	UFUNCTION(BlueprintNativeEvent, Category = Abilities)
+	void OnASCReadyOnOwningClient();
+	
+	virtual void OnPlayerStateChanged(APlayerState* NewPlayerState, APlayerState* OldPlayerState) override;
+	
 };
