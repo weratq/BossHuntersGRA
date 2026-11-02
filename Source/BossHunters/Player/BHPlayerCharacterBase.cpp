@@ -28,7 +28,6 @@ void ABHPlayerCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	GrantAllAbilities();
 }
 
 // Called every frame
@@ -59,5 +58,24 @@ void ABHPlayerCharacterBase::GrantAllAbilities()
 			ASC->K2_GiveAbility(Ability, 1, INDEX_NONE);
 		}
 	}
+}
+
+void ABHPlayerCharacterBase::OnPlayerStateChanged(APlayerState* NewPlayerState, APlayerState* OldPlayerState)
+{
+	Super::OnPlayerStateChanged(NewPlayerState, OldPlayerState);
+	if (GetLocalRole() == ROLE_Authority)
+	{
+		GrantAllAbilities();
+	}
+	else if (GetLocalRole() == ROLE_AutonomousProxy)
+	{
+		OnASCReadyOnOwningClient();
+	}
+	
+}
+
+void ABHPlayerCharacterBase::OnASCReadyOnOwningClient_Implementation()
+{
+	
 }
 

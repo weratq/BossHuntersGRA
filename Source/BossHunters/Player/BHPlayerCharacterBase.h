@@ -36,4 +36,10 @@ public:
 	
 	UFUNCTION(BlueprintCallable, Category = Abilities)
 	void GrantAllAbilities();
+	
+	UFUNCTION(BlueprintNativeEvent, Category = Abilities)
+	void OnASCReadyOnOwningClient();
+	
+	virtual void OnPlayerStateChanged(APlayerState* NewPlayerState, APlayerState* OldPlayerState) override;
+	
 };
