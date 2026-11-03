@@ -112,6 +112,14 @@ void UBasePlayerAttributeSet::PostGameplayEffectExecute(const FGameplayEffectMod
 	UAbilitySystemComponent* SourceASC = Context.GetOriginalInstigatorAbilitySystemComponent();
 	AActor* SourceActor = Context.GetEffectCauser();
 	AController* SourceController = nullptr;
+	/*
+	if (GetHealth() <= 0.f)
+	{
+		OnDeath.Broadcast(SourceActor, TargetActor);
+		Пересмотреть конец пары 03.11.
+	}
+	
+	 */
 /*
 	if (SourceASC)
 	{
@@ -140,10 +148,7 @@ void UBasePlayerAttributeSet::PostGameplayEffectExecute(const FGameplayEffectMod
 		PlayerController->ClientShowDamageNumber(LocalDamage, TargetActor, AssetTags.HasTagExact(BHTags::Damage_Critical), true);
 	}
 
-	if (GetHealth() <= 0.f)
-	{
-		OnDeath.Broadcast(SourceActor, TargetActor);
-	}
+
 */	
 }
 
