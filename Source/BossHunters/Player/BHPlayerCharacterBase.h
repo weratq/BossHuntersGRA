@@ -41,5 +41,8 @@ public:
 	void OnASCReadyOnOwningClient();
 	
 	virtual void OnPlayerStateChanged(APlayerState* NewPlayerState, APlayerState* OldPlayerState) override;
+
+	UFUNCTION(BlueprintNativeEvent)
+	void Die();
 	
 };

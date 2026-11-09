@@ -79,3 +79,10 @@ void ABHPlayerCharacterBase::OnASCReadyOnOwningClient_Implementation()
 	
 }
 
+void ABHPlayerCharacterBase::Die_Implementation()
+{
+	if (IsValid (GetPlayerState()))
+	{
+		GetPlayerState()->SetIsSpectator(true);
+	}
+}

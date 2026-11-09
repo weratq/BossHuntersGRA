@@ -6,6 +6,7 @@
 #include "GameplayEffect.h"
 #include "GameplayEffectExtension.h"
 #include "Net/UnrealNetwork.h"
+#include "Player/BHPlayerCharacterBase.h"
 //#include "Player/BHPlayerController.h"
 
 UBasePlayerAttributeSet::UBasePlayerAttributeSet()
@@ -112,14 +113,24 @@ void UBasePlayerAttributeSet::PostGameplayEffectExecute(const FGameplayEffectMod
 	UAbilitySystemComponent* SourceASC = Context.GetOriginalInstigatorAbilitySystemComponent();
 	AActor* SourceActor = Context.GetEffectCauser();
 	AController* SourceController = nullptr;
-	/*
+
+	if (GetHealth() <= 0.f)
+	{
+		SourceActor = SourceASC->GetAvatarActor();
+		ABHPlayerCharacterBase* BHChar = Cast<ABHPlayerCharacterBase>(SourceActor);
+		if (IsValid(BHChar))
+		{
+			BHChar->Die();
+		}
+	}
+/*
 	if (GetHealth() <= 0.f)
 	{
 		OnDeath.Broadcast(SourceActor, TargetActor);
-		Пересмотреть конец пары 03.11.
 	}
+*/
 	
-	 */
+
 /*
 	if (SourceASC)
 	{
