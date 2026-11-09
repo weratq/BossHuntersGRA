@@ -31,6 +31,7 @@ public:
 	virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data) override;
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
+	
 	/** Broadcast on the server when Health reaches zero. */
 	UPROPERTY(BlueprintAssignable, Category = "Death")
 	FBHOnDeath OnDeath;
