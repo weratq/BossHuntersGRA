@@ -12,6 +12,14 @@ UAsyncTaskListenEffectsApplied* UAsyncTaskListenEffectsApplied::ListenApplyedEff
 	Result->ASC = FromASC;
 	
 	Result->ASC->OnActiveGameplayEffectAddedDelegateToSelf.AddUObject(Result,&UAsyncTaskListenEffectsApplied::OnEffectApply);
+	/*
+	FOnActiveGameplayEffectStackChange* DelPtr = Result->ASC->OnGameplayEffectStackChangeDelegate(Handle);
+	if (DelPtr)
+	{
+		OnGameplayEffectStackChangeDelegateHandle = DelPtr->AddUObject(this, &UAbilityTask_WaitGameplayEffectStackChange::OnGameplayEffectStackChange);
+		Registered = true;
+	}
+	*/
 	
 	return Result;
 }
@@ -24,6 +32,7 @@ void UAsyncTaskListenEffectsApplied::OnEffectApply(UAbilitySystemComponent* Sour
 	{
 		FUIEffectListenData EffectListenData;
         EffectListenData.Spec = EffectSpec;
+		EffectListenData.GameplayEffectHandle = ActiveGameplayEffectHandle;
         EffectListenData.Tag = EffectSpec.Def->GetGrantedTags().First();
 		EffectListenData.Duration = EffectSpec.GetDuration();
 		EffectListenData.StackCount = EffectSpec.GetStackCount();
@@ -31,5 +40,7 @@ void UAsyncTaskListenEffectsApplied::OnEffectApply(UAbilitySystemComponent* Sour
 		NewEffectAppliedDelegate.Broadcast(EffectListenData);
 	}
 }
+
+
 
 

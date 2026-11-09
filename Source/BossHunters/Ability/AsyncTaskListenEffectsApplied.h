@@ -28,6 +28,8 @@ struct FUIEffectListenData
 	int StackCount;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float Duration;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	FActiveGameplayEffectHandle GameplayEffectHandle;
 };
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FUIEffectAppliedDelegate, FUIEffectListenData, Data);
@@ -56,10 +58,7 @@ public:
 	
 	UPROPERTY(BlueprintAssignable)
 	FUIEffectAppliedDelegate NewEffectAppliedDelegate;
-	
-	
-	
-	
+
 	
 private:
 	
