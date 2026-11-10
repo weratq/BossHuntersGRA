@@ -42,4 +42,5 @@ public:
 	
 	virtual void OnPlayerStateChanged(APlayerState* NewPlayerState, APlayerState* OldPlayerState) override;
 	
+	
 };
