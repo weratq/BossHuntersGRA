@@ -45,4 +45,5 @@ public:
 	UFUNCTION(BlueprintNativeEvent)
 	void Die();
 	
+	
 };

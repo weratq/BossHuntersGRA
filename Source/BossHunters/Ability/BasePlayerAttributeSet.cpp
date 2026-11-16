@@ -150,7 +150,6 @@ void UBasePlayerAttributeSet::PostGameplayEffectExecute(const FGameplayEffectMod
 			}
 		}
 	}
-/*
 	AActor* TargetActor = Data.Target.GetAvatarActor();
 	if (ABHPlayerController* PlayerController = Cast<ABHPlayerController>(SourceController))
 	{

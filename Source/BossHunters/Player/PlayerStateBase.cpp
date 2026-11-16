@@ -14,6 +14,4 @@ APlayerStateBase::APlayerStateBase()
 	
 	BasePlayerAttributeSet = CreateDefaultSubobject<UBasePlayerAttributeSet>("BasePlayerAttributeSet");
 	
-	
-	
 }
