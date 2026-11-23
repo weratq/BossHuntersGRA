@@ -8,6 +8,8 @@
 
 UAsyncTaskListenEffectsApplied* UAsyncTaskListenEffectsApplied::ListenApplyedEffects(UAbilitySystemComponent* FromASC)
 {
+	if (!IsValid(FromASC)) return nullptr;
+	
 	UAsyncTaskListenEffectsApplied* Result = NewObject<UAsyncTaskListenEffectsApplied>();
 	Result->ASC = FromASC;
 	
