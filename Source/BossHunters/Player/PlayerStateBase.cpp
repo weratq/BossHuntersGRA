@@ -2,8 +2,6 @@
 
 
 #include "PlayerStateBase.h"
-#include "Player/PlayerStateBase.h"
-
 #include "AbilitySystemComponent.h"
 #include "Ability/BasePlayerAttributeSet.h"
 
@@ -15,3 +13,15 @@ APlayerStateBase::APlayerStateBase()
 	BasePlayerAttributeSet = CreateDefaultSubobject<UBasePlayerAttributeSet>("BasePlayerAttributeSet");
 	
 }
+
+void APlayerStateBase::OnRep_PlayerName()
+{
+	Super::OnRep_PlayerName();
+	OnPlayerNameDelegate.Broadcast();
+}
+
+void APlayerStateBase::SetNickName(FString NickName)
+{
+	SetPlayerName(NickName);
+}
+
