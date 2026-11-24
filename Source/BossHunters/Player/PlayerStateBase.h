@@ -7,6 +7,9 @@
 #include "AbilitySystemComponent.h"
 #include "PlayerStateBase.generated.h"
 
+
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnPlayerNameDelegate);
 class UBasePlayerAttributeSet;
 /**
  * 
@@ -25,5 +28,10 @@ public:
 	UPROPERTY(BlueprintReadWrite,EditAnywhere)
 	UBasePlayerAttributeSet* BasePlayerAttributeSet;
 	
+	UPROPERTY(BlueprintAssignable)
+	FOnPlayerNameDelegate OnPlayerNameDelegate;
+	virtual void OnRep_PlayerName() override;
 	
+	UFUNCTION(BlueprintCallable)
+	void SetNickName(FString NickName);
 };
